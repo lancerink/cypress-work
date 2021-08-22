@@ -1,10 +1,10 @@
 // const { get } = require("cypress/types/lodash")
-
+/// <reference types="cypress" />
 const { default: MenuItem } = require("antd/lib/menu/MenuItem")
 
-describe ('first test case', () => {
+describe ('header bar', () => {
     beforeEach(() => {
-        cy.visit('http://localhost:3000')
+        cy.visit('http://localhost:3000/')
       })
 
     it ('check logo', () => {
@@ -17,10 +17,13 @@ describe ('first test case', () => {
     })
 
     it('go to the homepage via navigator',() => {
-        cy.get('a[href*="/login"]').click()
-        cy.get('#login_email') .should('be.visible')
+        cy.visit('http://localhost:3000/events')
         cy.get('#logo').click()
         cy.get('.slider').should('be.visible')
+        // cy.get('a[href*="/login"]').click()
+        // cy.get('#login_email') .should('be.visible')
+        // cy.get('#logo').click()
+        // cy.get('.slider').should('be.visible')
     })
 
     it ('check header is always visible', () => {
@@ -32,6 +35,7 @@ describe ('first test case', () => {
         cy.get('a[href*="/login"]').click()
         cy.get('#login_email').type('annitest@gmail.com')
         cy.get('#login_password').type('123qweasd')
+        cy.get('[type="submit"').click()
         cy.get('a[href*="/login"]').should('not.be.visible')
     })
 
