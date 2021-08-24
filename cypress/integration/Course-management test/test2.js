@@ -17,7 +17,7 @@ describe ('header bar', () => {
     })
 
     it('go to the homepage via navigator',() => {
-        cy.visit('http://localhost:3000/events')
+        cy.visit('/events')
         cy.get('#logo').click()
         cy.get('.slider').should('be.visible')
         // cy.get('a[href*="/login"]').click()

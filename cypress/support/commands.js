@@ -24,3 +24,16 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+// const cypress = require("cypress");
+
+// Cypress.Commands.add('login', (email, pw) => {
+
+//     cy.get('a[href*="/login"]').click()
+//         cy.get('#login_role > :nth-child(3)').click()
+
+        
+//         cy.get('#login_email').type('manager@admin.com')
+//         cy.get('#login_password').type('111111')
+
+//         cy.get('[type="submit"').click()
+// })
