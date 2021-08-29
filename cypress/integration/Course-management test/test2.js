@@ -4,7 +4,7 @@ const { default: MenuItem } = require("antd/lib/menu/MenuItem")
 
 describe ('header bar', () => {
     beforeEach(() => {
-        cy.visit('http://localhost:3000/')
+        cy.visit('/')
       })
 
     it ('check logo', () => {

@@ -24,16 +24,28 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-// const cypress = require("cypress");
 
-// Cypress.Commands.add('login', (email, pw) => {
 
-//     cy.get('a[href*="/login"]').click()
-//         cy.get('#login_role > :nth-child(3)').click()
+Cypress.Commands.add('login', (email, password) => {
 
-        
-//         cy.get('#login_email').type('manager@admin.com')
-//         cy.get('#login_password').type('111111')
+    const loginPath = '/login'
 
-//         cy.get('[type="submit"').click()
-// })
+    cy.location('pathname').then((currentPath) => {
+        if (currentPath !== loginPath){
+            cy.visit(loginPath)
+        }
+    })
+
+    cy.intercept('POST','/api/login').as('loginRes')
+
+    cy.get('#login_role > :nth-child(3)').click()
+    cy.get('#login_email').type(email)
+    cy.get('#login_password').type(password)
+    cy.get('[type="submit"').click()
+
+    cy.wait('@loginRes').then( () => {
+
+    })
+
+
+})
