@@ -24,28 +24,35 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-import 'cypress-file-upload'
+import 'cypress-file-upload';
 
 Cypress.Commands.add('login', (email, password) => {
+  const loginPath = '/login';
 
-    const loginPath = '/login'
+  cy.location('pathname').then((currentPath) => {
+    if (currentPath !== loginPath) {
+      cy.visit(loginPath);
+    }
+  });
 
-    cy.location('pathname').then((currentPath) => {
-        if (currentPath !== loginPath){
-            cy.visit(loginPath)
-        }
-    })
+  cy.intercept('POST', '/api/login').as('loginRes');
 
-    cy.intercept('POST','/api/login').as('loginRes')
+  cy.get('#login_role > :nth-child(3)').click();
+  cy.get('#login_email').type(email);
+  cy.get('#login_password').type(password);
+  cy.get('[type="submit"]').click();
 
-    cy.get('#login_role > :nth-child(3)').click()
-    cy.get('#login_email').type(email)
-    cy.get('#login_password').type(password)
-    cy.get('[type="submit"').click()
-
-    cy.wait('@loginRes').then( () => {
-
-    })
-
-
-})
+  cy.wait('@loginRes').then((res) => {
+    const user = res.response.body.data;
+    Cypress.env('token', user.token);
+    log.set({
+      consoleProps() {
+        return {
+          userId: user.userId,
+          role: user.role,
+          token: user.token,
+        };
+      },
+    });
+  });
+});

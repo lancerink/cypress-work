@@ -1,0 +1,25 @@
+{
+  "code": 200,
+  "msg": "success",
+  "data": {
+  "id": 7,
+  "name": "测试基础02",
+  "uid": "TEST",
+  "detail": "no",
+  "startTime": "2020-12-08",
+  "price": 99,
+  "maxStudents": 5,
+  "payStudents": 4,
+  "star": 3,
+  "status": 0,
+  "duration": 3,
+  "durationUnit": 2,
+  "cover": "http://v.bootstrapmb.com/2020/11/cbgse9169/images/courses/pic1.jpg",
+  "teacherId": 2,
+  "typeId": 14,
+  "teacherName": "lucy",
+  "typeName": "xx",
+  "ctime": "2020-06-19 15:34:25",
+  "scheduleId": 2
+}
+}

@@ -1,3 +1,6 @@
 {
-    "baseUrl" : "https://cms-lyart.vercel.app/"
+    "baseUrl" : "https://cms-lyart.vercel.app/",
+    "env": {
+    "prod": "https://cms.chtoma.com/api"
+  }
 }
