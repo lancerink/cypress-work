@@ -28,6 +28,11 @@ import 'cypress-file-upload';
 
 Cypress.Commands.add('login', (email, password) => {
   const loginPath = '/login';
+  const log = Cypress.log({
+    name: 'login',
+    displayName: 'LOGIN',
+    message: `${email}`,
+  });
 
   cy.location('pathname').then((currentPath) => {
     if (currentPath !== loginPath) {

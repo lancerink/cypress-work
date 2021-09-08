@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 import { AES } from 'crypto-js';
 
-describe('login api', () => {
+describe('Login Api', () => {
   context('POST /login', () => {
     it('should login with student account', () => {
       const psw = AES.encrypt('111111', 'cms').toString();
