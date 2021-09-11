@@ -16,7 +16,10 @@
  * @type {Cypress.PluginConfig}
  */
 // eslint-disable-next-line no-unused-vars
+const { initPlugin } = require('cypress-plugin-snapshots/plugin');
+const { addMatchImageSnapshotPlugin } = require('cypress-image-snapshot/plugin');
 module.exports = (on, config) => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
+  initPlugin(on, config);
+  addMatchImageSnapshotPlugin(on, config);
+  return config;
 }

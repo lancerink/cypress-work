@@ -28,16 +28,16 @@ describe('Course Api', () => {
   });
 
   context('GET /course/detail', () => {
-    const token = Cypress.env('token');
-    const authorization = `bearer ${token}`;
-    const options = {
-      method: 'GET',
-      url: `${Cypress.env().prod}/courses/detail?id=2`,
-      headers: {
-        authorization,
-      },
-    };
     it('get a course with detail', () => {
+      const token = Cypress.env('token');
+      const authorization = `bearer ${token}`;
+      const options = {
+        method: 'GET',
+        url: `${Cypress.env().prod}/courses/detail?id=2`,
+        headers: {
+          authorization,
+        },
+      };
       cy.request(options).then((res) => {
         const data = res.body.data;
         const chapters = data.schedule.chapters;

@@ -25,6 +25,15 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 import 'cypress-file-upload';
+import 'cypress-plugin-snapshots/commands';
+import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
+
+addMatchImageSnapshotCommand({
+  failureThreshold: 0.0,
+  failureThresholdType: 'percent',
+  customDiffConfig: { threshold: 0.1 },
+  capture: 'viewport',
+});
 
 Cypress.Commands.add('login', (email, password) => {
   const loginPath = '/login';
@@ -41,7 +50,6 @@ Cypress.Commands.add('login', (email, password) => {
   });
 
   cy.intercept('POST', '/api/login').as('loginRes');
-
   cy.get('#login_role > :nth-child(3)').click();
   cy.get('#login_email').type(email);
   cy.get('#login_password').type(password);

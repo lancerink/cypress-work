@@ -5,7 +5,7 @@ describe('Login Page', () => {
     cy.visit('/login');
   });
 
-  it('Login in with manager account', () => {
+  it.only('Login in with manager account', () => {
     cy.get('#login_role > :nth-child(3)').click();
     cy.get('#login_email').type(email);
     cy.get('#login_password').type(password);

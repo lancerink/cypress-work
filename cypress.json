@@ -1,6 +1,9 @@
 {
-    "baseUrl" : "https://cms-lyart.vercel.app/",
-    "env": {
+  "baseUrl": "https://cms-lyart.vercel.app/",
+  "viewportHeight": 1080,
+  "viewportWidth": 1920,
+  "env": {
     "prod": "https://cms.chtoma.com/api"
-  }
+  },
+  "ignoreTestFiles": ["*/examples/**", "**/__snapshots__/*", "**/__image_snapshots__/*","**/__screenshots__/*"]
 }
